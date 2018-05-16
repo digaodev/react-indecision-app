@@ -18,6 +18,26 @@ class App extends Component {
     options: []
   };
 
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem('options');
+      const options = JSON.parse(json);
+
+      if (options) {
+        this.setState(() => ({ options }));
+      }
+    } catch (error) {}
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { options } = this.state;
+
+    if (prevState.options.length !== options.length) {
+      const json = JSON.stringify(options);
+      localStorage.setItem('options', json);
+    }
+  }
+
   handleDecision = () => {
     const { options } = this.state;
     const randomNum = Math.floor(Math.random() * options.length);
@@ -63,9 +83,8 @@ class App extends Component {
           hasOptions={options.length > 0}
         />
         <hr />
-        <AddOption
-          handleAddOption={this.handleAddOption}
-        />
+        <AddOption handleAddOption={this.handleAddOption} />
+        {options.length === 0 && <p>Please add an option to get started!</p>}
         <OptionList
           options={options}
           handleDeleteOption={this.handleDeleteOption}

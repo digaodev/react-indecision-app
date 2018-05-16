@@ -20,7 +20,13 @@ class AddOption extends Component {
 
     const errorMsg = handleAddOption(inputText);
 
-    this.setState(() => ({ inputText: '', error: errorMsg }));
+    if (errorMsg) {
+      // if there is an error, keep the input and set the error
+      this.setState(() => ({ error: errorMsg }));
+    } else {
+      // if there isnt, clean the input and the error
+      this.setState(() => ({ inputText: '', error: errorMsg }));
+    }
 
     e.target.option.focus();
   };
