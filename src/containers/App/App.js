@@ -12,10 +12,12 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import OptionList from '../../components/OptionsList/OptionsList';
 import Decision from '../../components/Decision/Decision';
+import OptionModal from '../../components/OptionModal/OptionModal';
 
 class App extends Component {
   state = {
-    options: []
+    options: [],
+    selectedOption: null
   };
 
   componentDidMount() {
@@ -43,7 +45,9 @@ class App extends Component {
     const randomNum = Math.floor(Math.random() * options.length);
     const selectedOption = options[randomNum];
 
-    alert(`You need to do ${selectedOption.text}!`);
+    this.setState(() => ({ selectedOption: selectedOption }));
+
+    // alert(`You need to do ${selectedOption.text}!`);
   };
 
   handleAddOption = optionText => {
@@ -72,8 +76,12 @@ class App extends Component {
     this.setState(() => ({ options: [] }));
   };
 
+  handleClearSelectedOption = () => {
+    this.setState(() => ({ selectedOption: null }));
+  };
+
   render() {
-    const { options } = this.state;
+    const { options, selectedOption } = this.state;
 
     return (
       <div className="App">
@@ -89,6 +97,10 @@ class App extends Component {
           options={options}
           handleDeleteOption={this.handleDeleteOption}
           handleDeleteAllOptions={this.handleDeleteAllOptions}
+        />
+        <OptionModal
+          selectedOption={selectedOption}
+          handleClearSelectedOption={this.handleClearSelectedOption}
         />
         <Footer />
       </div>
