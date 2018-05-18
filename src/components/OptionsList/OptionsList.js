@@ -8,6 +8,7 @@ const OptionsList = ({
   handleDeleteAllOptions
 }) => (
   <section className="options-list">
+  <h3>Your options</h3>
     {options.length > 0 && (
       <button onClick={handleDeleteAllOptions}>Remove All Options</button>
     )}
