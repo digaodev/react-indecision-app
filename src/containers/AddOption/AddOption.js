@@ -1,5 +1,59 @@
 import React, { Component } from 'react';
 
+// 3rd PARTY PACKAGES
+import styled from 'styled-components';
+
+const Container = styled.section`
+  background-color: #1c313a;
+  padding: 2rem;
+`;
+
+const Form = styled.form`
+  display: flex;
+`;
+
+const Input = styled.input`
+  background-color: #555;
+  border: none;
+  border-bottom: 4px solid #102027;
+  color: #ddd;
+  flex: 1;
+  outline: none;
+  padding: 1rem;
+`;
+
+const Button = styled.button`
+  background-color: #0081cb;
+  border: none;
+  margin-left: 1rem;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  flex: 0 0 auto;
+  outline: none;
+  padding: 1rem;
+  text-transform: uppercase;
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  :focus {
+    background-color: #00b0ff;
+  }
+
+  :disabled {
+    background-color: #718792;
+    color: #ccc;
+    cursor: not-allowed;
+  }
+
+  &:active {
+    background-color: #69e2ff;
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+      0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  }
+`;
+
 class AddOption extends Component {
   state = {
     inputText: '',
@@ -35,10 +89,10 @@ class AddOption extends Component {
     const { inputText, error } = this.state;
 
     return (
-      <section className="add-option">
-        <form onSubmit={this.handleAddOption}>
+      <Container>
+        <Form onSubmit={this.handleAddOption}>
           {error && <p>{error}</p>}
-          <input
+          <Input
             type="text"
             name="option"
             id="option"
@@ -46,11 +100,11 @@ class AddOption extends Component {
             onChange={this.handleInputChange}
             autoFocus
           />
-          <button type="submit" disabled={inputText.length === 0}>
-            Add Option to Task List
-          </button>
-        </form>
-      </section>
+          <Button type="submit" disabled={inputText.length === 0}>
+            Add Option
+          </Button>
+        </Form>
+      </Container>
     );
   }
 }
