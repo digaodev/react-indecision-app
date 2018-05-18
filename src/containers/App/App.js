@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
+// 3rd PARTY PACKAGES
 import uuidv4 from 'uuid/v4';
-
-import './App.css';
+import styled from 'styled-components';
 
 // CONTAINERS
 import AddOption from '../AddOption/AddOption';
@@ -13,6 +13,14 @@ import Footer from '../../components/Footer/Footer';
 import OptionList from '../../components/OptionsList/OptionsList';
 import Decision from '../../components/Decision/Decision';
 import OptionModal from '../../components/OptionModal/OptionModal';
+
+const FlexColumnContainer = styled.div`
+  background-color: #37474f;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 class App extends Component {
   state = {
@@ -34,6 +42,7 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { options } = this.state;
 
+    // There is no 'Save Tasks button', so whenever the options list changes in the app state, set the localStorage
     if (prevState.options.length !== options.length) {
       const json = JSON.stringify(options);
       localStorage.setItem('options', json);
@@ -46,8 +55,6 @@ class App extends Component {
     const selectedOption = options[randomNum];
 
     this.setState(() => ({ selectedOption: selectedOption }));
-
-    // alert(`You need to do ${selectedOption.text}!`);
   };
 
   handleAddOption = optionText => {
@@ -84,13 +91,13 @@ class App extends Component {
     const { options, selectedOption } = this.state;
 
     return (
-      <div className="App">
+      <FlexColumnContainer>
         <Header />
+
         <Decision
           handleDecision={this.handleDecision}
           hasOptions={options.length > 0}
         />
-        <hr />
         <AddOption handleAddOption={this.handleAddOption} />
         {options.length === 0 && <p>Please add an option to get started!</p>}
         <OptionList
@@ -102,8 +109,9 @@ class App extends Component {
           selectedOption={selectedOption}
           handleClearSelectedOption={this.handleClearSelectedOption}
         />
+
         <Footer />
-      </div>
+      </FlexColumnContainer>
     );
   }
 }
