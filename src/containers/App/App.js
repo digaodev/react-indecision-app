@@ -14,12 +14,17 @@ import OptionList from '../../components/OptionsList/OptionsList';
 import Decision from '../../components/Decision/Decision';
 import OptionModal from '../../components/OptionModal/OptionModal';
 
-const FlexColumnContainer = styled.div`
+const AppContainer = styled.div`
   background-color: #37474f;
   color: #eee;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+`;
+
+const MainContainer = styled.div`
+  padding: 2rem;
+  flex: 1;
 `;
 
 class App extends Component {
@@ -91,27 +96,29 @@ class App extends Component {
     const { options, selectedOption } = this.state;
 
     return (
-      <FlexColumnContainer>
+      <AppContainer>
         <Header />
 
-        <Decision
-          handleDecision={this.handleDecision}
-          hasOptions={options.length > 0}
-        />
-        <AddOption handleAddOption={this.handleAddOption} />
-        {options.length === 0 && <p>Please add an option to get started!</p>}
-        <OptionList
-          options={options}
-          handleDeleteOption={this.handleDeleteOption}
-          handleDeleteAllOptions={this.handleDeleteAllOptions}
-        />
-        <OptionModal
-          selectedOption={selectedOption}
-          handleClearSelectedOption={this.handleClearSelectedOption}
-        />
+        <MainContainer>
+          <Decision
+            handleDecision={this.handleDecision}
+            hasOptions={options.length > 0}
+          />
+
+          <OptionList
+            options={options}
+            handleDeleteOption={this.handleDeleteOption}
+            handleDeleteAllOptions={this.handleDeleteAllOptions}
+          />
+          <AddOption handleAddOption={this.handleAddOption} />
+          <OptionModal
+            selectedOption={selectedOption}
+            handleClearSelectedOption={this.handleClearSelectedOption}
+          />
+        </MainContainer>
 
         <Footer />
-      </FlexColumnContainer>
+      </AppContainer>
     );
   }
 }

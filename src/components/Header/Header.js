@@ -3,7 +3,7 @@ import React from 'react';
 // 3rd PARTY PACKAGES
 import styled from 'styled-components';
 
-const Container = styled.section`
+const Container = styled.header`
   background-color: #1c313a;
   padding: 2rem;
 `;
