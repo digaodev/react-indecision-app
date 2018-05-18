@@ -49,7 +49,7 @@ const OptionsList = ({
   <Container className="options-list">
     <HeaderContainer>
       <Title>Your options</Title>
-      {options.length > 0 && (
+      {options.length > 1 && (
         <Button onClick={handleDeleteAllOptions}>Remove All Options</Button>
       )}
     </HeaderContainer>

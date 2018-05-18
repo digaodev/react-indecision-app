@@ -63,7 +63,7 @@ class AddOption extends Component {
   handleInputChange = evt => {
     const inputValue = evt.target.value.trim();
 
-    if (inputValue.length > 0) this.setState(() => ({ inputText: inputValue }));
+    this.setState(() => ({ inputText: inputValue }));
   };
 
   handleAddOption = e => {
