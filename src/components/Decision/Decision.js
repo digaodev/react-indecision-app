@@ -16,14 +16,15 @@ const Button = styled.button`
   background-color: #0081cb;
   border: none;
   border-radius: 0.3rem;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.14),
+    0 3px 10px 2px rgba(0, 0, 0, 0.12), 0 3px 3px -3px rgba(0, 0, 0, 0.4);
   color: #fff;
   cursor: pointer;
   outline: none;
   padding: 1.8rem;
   text-transform: uppercase;
-  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
 
   &:hover,
   :focus {

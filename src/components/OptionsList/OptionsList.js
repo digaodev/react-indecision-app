@@ -28,6 +28,7 @@ const Button = styled.button`
   background-color: inherit;
   color: #69e2ff;
   cursor: pointer;
+  font-size: 1.4rem;
   outline: none;
   transition: color 0.2s ease-in-out;
 

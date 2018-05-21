@@ -10,31 +10,47 @@ const Container = styled.section`
 
 const Form = styled.form`
   display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    align-items: center;
+  }
+`;
+
+const ErrorParagraph = styled.p`
+  background-color: palevioletred;
+  color: #eee;
+  font-size: 1.4rem;
+  padding: 1rem;
 `;
 
 const Input = styled.input`
   background-color: #555;
   border: none;
-  border-bottom: 4px solid #102027;
+  border-bottom: 6px solid #102027;
   color: #ddd;
   flex: 1;
+  font-size: 1.6rem;
   outline: none;
-  padding: 1rem;
+  padding: 1.2rem;
 `;
 
 const Button = styled.button`
   background-color: #0081cb;
   border: none;
-  margin-left: 1rem;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+
+  box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.14),
+    0 3px 10px 2px rgba(0, 0, 0, 0.12), 0 3px 3px -3px rgba(0, 0, 0, 0.4);
   color: #fff;
   cursor: pointer;
-  flex: 0 0 auto;
+
   outline: none;
-  padding: 1rem;
+  padding: 1.6rem;
   text-transform: uppercase;
-  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   :focus {
@@ -49,8 +65,14 @@ const Button = styled.button`
 
   &:active {
     background-color: #69e2ff;
-    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12),
       0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (min-width: 600px) {
+    flex: 0 0 auto;
+    margin-left: 1rem;
+    padding: 1rem;
   }
 `;
 
@@ -61,9 +83,8 @@ class AddOption extends Component {
   };
 
   handleInputChange = evt => {
-    const inputValue = evt.target.value.trim();
-
-    this.setState(() => ({ inputText: inputValue }));
+    const value = evt.target.value;
+    this.setState(() => ({ inputText: value }));
   };
 
   handleAddOption = e => {
@@ -91,7 +112,6 @@ class AddOption extends Component {
     return (
       <Container>
         <Form onSubmit={this.handleAddOption}>
-          {error && <p>{error}</p>}
           <Input
             type="text"
             name="option"
@@ -104,6 +124,7 @@ class AddOption extends Component {
             Add Option
           </Button>
         </Form>
+        {error && <ErrorParagraph>{error}</ErrorParagraph>}
       </Container>
     );
   }

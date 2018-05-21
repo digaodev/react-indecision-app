@@ -23,8 +23,15 @@ const AppContainer = styled.div`
 `;
 
 const MainContainer = styled.div`
-  padding: 2rem;
+  padding: 4rem;
   flex: 1;
+  min-width: 100vw;
+  transition: all 0.5s ease-in;
+
+  @media (min-width: 600px) {
+    margin: 0 auto;
+    min-width: 40%;
+  }
 `;
 
 class App extends Component {
@@ -65,7 +72,7 @@ class App extends Component {
   handleAddOption = optionText => {
     const { options } = this.state;
 
-    if (!optionText) {
+    if (!optionText.trim()) {
       return 'Please enter a valid option to add.';
     }
 

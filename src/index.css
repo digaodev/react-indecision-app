@@ -39,3 +39,77 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* MODAL STYLES */
+
+.ReactModalPortal>div {
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+.ReactModal__Overlay .ReactModal__Overlay--after-open {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modal {
+  color: #eee;
+  background-color: #1c313a;
+  max-width: 40rem;
+  outline: none;
+  padding: 4rem;
+  text-align: center;
+}
+
+.modal__title {
+  padding: 1rem;
+}
+
+.modal__body {
+  color: #69e2ff;
+  padding: 2rem;
+  word-break: break-all;
+}
+
+.modal__button {
+  background-color: #0081cb;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.14), 0 3px 10px 2px rgba(0, 0, 0, 0.12), 0 3px 3px -3px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  flex: 0 0 auto;
+  outline: none;
+  padding: 1rem;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.modal__button:hover,
+.modal__button:focus {
+  background-color: #00b0ff;
+}
+
+.modal__button:disabled {
+  background-color: #718792;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.modal__button:active {
+  background-color: #69e2ff;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}

@@ -8,10 +8,16 @@ const OptionModal = ({ selectedOption, handleClearSelectedOption }) => (
     isOpen={!!selectedOption}
     contentLabel="Modal Message for Selected Option"
     onRequestClose={handleClearSelectedOption}
+    closeTimeoutMS={200}
+    className="modal"
   >
-    <h3>Selected Option</h3>
-    {selectedOption && <p>You need to do {selectedOption.text}!</p>}
-    <button onClick={handleClearSelectedOption}>I'm on it</button>
+    <h3 className="modal__title">Selected Option</h3>
+    {selectedOption && (
+      <p className="modal__body">You need to {selectedOption.text}!</p>
+    )}
+    <button className="modal__button" onClick={handleClearSelectedOption}>
+      I'm on it
+    </button>
   </Modal>
 );
 
